@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:14 as builder
 
 WORKDIR /usr/src/app
 
@@ -8,8 +8,14 @@ RUN npm install
 
 COPY . .
 
+FROM node:14-alpine
+
+WORKDIR /usr/src/app
+
+COPY --from=builder /usr/src/app .
+
 ENV PORT=4000
-ENV MONGODB_URI=mongodb://0.0.0.0:27017/store
+ENV MONGODB_URI=mongodb://mongo:27017/store
 
 EXPOSE $PORT
 
