@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const productRoutes = require('./app/routes/productRoutes');
+const productRoutes = require('../app/routes/productRoutes');
 const cors = require('cors')
 
 const app = express();
@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(cors())
 
 
-mongoose.connect('mongodb://localhost:27017/store', {
+mongoose.connect('mongodb://0.0.0.0:27017/store', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
