@@ -1,0 +1,34 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - my-network
+
+  node_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: store-back
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - MONGODB_URI=mongodb://mongo:27017/store
+    depends_on:
+      - mongo
+    networks:
+      - my-network
+
+  react_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: store-front-
+    ports:
+      - "3001:3000" 
+networks:
+  my-network:

@@ -8,6 +8,9 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3000
+ENV PORT=4000
+ENV MONGODB_URI=mongodb://0.0.0.0:27017/store
+
+EXPOSE $PORT
 
 CMD ["npm", "start"]

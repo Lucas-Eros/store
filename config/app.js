@@ -2,18 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const productRoutes = require('../app/routes/productRoutes');
-const cors = require('cors')
+const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
+const PORT = process.env.PORT || 4000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/store';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
 
-
-mongoose.connect('mongodb://0.0.0.0:27017/store', {
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
