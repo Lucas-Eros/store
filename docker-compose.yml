@@ -11,7 +11,7 @@ services:
   node_app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-node
     container_name: store-back
     ports:
       - "4000:4000"
@@ -22,13 +22,15 @@ services:
       - mongo
     networks:
       - my-network
-
-  react_app:
+  react-app:
     build:
-      context: .
+      context: ../Store-front-
       dockerfile: Dockerfile
-    container_name: store-front-
+    container_name: store-front
     ports:
-      - "3001:3000" 
+      - "3000:3000"
+    
+    depends_on:
+     - node_app
 networks:
   my-network:

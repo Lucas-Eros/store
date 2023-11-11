@@ -23,3 +23,6 @@ Antes de começar, certifique-se de ter instalado:
 
 ## Frontend
 https://github.com/Lucas-Eros/Store-front-.git
+
+OBS: caso queira rodar o docker-compose, clone os repositórios na mesma pasta e execute o comando em um dos diretórios:
+    docker-compose up
